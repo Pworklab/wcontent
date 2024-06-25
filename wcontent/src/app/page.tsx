@@ -22,28 +22,6 @@ export default function Home() {
     tags: string[];
   }
 
-  // the result of the whole API
-  interface appnews {
-    appid: number;
-    newsitems: newsitems[];
-    count: number;
-  }
-
-  interface newsitems {
-    gid: string;
-    title: string;
-    url: string;
-    is_external_url: boolean;
-    author: string;
-    contents: string;
-    feedlabel: string;
-    date: number;
-    feedname: string;
-    feed_type: number;
-    appid: number;
-    tags: string[];
-  }
-
   interface APIData {
     _id: string;
     content: string;
@@ -70,14 +48,6 @@ export default function Home() {
     console.log(slip.advice);
   }
 
-  async function APINEWS() {
-    const result = await fetch("api/news");
-    const json = await result.json();
-    const appNews = json.appnews as appnews;
-    const newsItem = appNews.newsitems[0] as newsitems;
-    console.log("id", appNews.appid, "context", newsItem.contents);
-  }
-
   return (
     <main className="bg-fullscreen">
       <div className="text-white">hello underworld</div>
@@ -88,19 +58,11 @@ export default function Home() {
           AAAA
         </button>
       </div>
-
       <div>
         <button className="text-white" onClick={async () => APIB()}>
           BBBB
         </button>
       </div>
-
-      <div>
-        <button className="text-white" onClick={async () => APINEWS()}>
-          NEWS
-        </button>
-      </div>
-
       <div className="text-white">hey there news here!!!</div>
     </main>
   );
@@ -139,8 +101,6 @@ Output format. json (default), xml or vdf.
   //omit
   //pick
   // t
-
   // as Array<APIData>
   // as APIData[]
-
  */

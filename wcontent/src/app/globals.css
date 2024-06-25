@@ -15,6 +15,11 @@
   width: 100%;
 }
 
+.pannel-screen{
+width: 169px;
+height: 169px;
+}
+
 .h-button {
   display: inline-block;
   border-style: solid;

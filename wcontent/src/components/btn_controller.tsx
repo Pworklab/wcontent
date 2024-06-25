@@ -46,6 +46,52 @@ export function Back_btn() {
     </div>
   );
 }
+/*
+export function ToExternalPath_btn(link: string) {
+  function a() {
+    const router = useRouter();
+    const yes = window.confirm(
+      "別のウェブサイトに移動しようとしています。このまま進んでもよろしいですか？"
+    );
+    if (yes) {
+      router.push(link);
+    } else {
+      // do nothing
+    }
+  }
+
+  return (
+    <button onClick={a} className="bg-green-500">
+      check for more details
+    </button>
+  );
+}
+*/
+
+interface path {
+  link: string;
+}
+//function Header_btn({ title, link }: HeaderBtnProps) {
+export function ToExternalPathBtn({ link }: path) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    const yes = window.confirm(
+      "別のウェブサイトに移動しようとしています。このまま進んでもよろしいですか？"
+    );
+    if (yes) {
+      router.push(link);
+    }
+  };
+
+  return (
+    <button onClick={handleClick} className="bg-green-500">
+      check for more details
+    </button>
+  );
+}
+
+export function OpenNewTab_btn(url: string) {}
 
 export default Back_btn;
 export { Header_btn };

@@ -1,9 +1,18 @@
-interface M_pannelProps {
+interface D_pannelProps {
   name: string;
   descript?: string;
 }
 
-export function M_pannel() {
+function numToStar(num) {
+  if (num < 0 || num > 5) {
+    return "☆☆☆☆☆";
+  }
+  const filledStars = "★★★★★".slice(0, num);
+  const emptyStars = "☆☆☆☆☆".slice(num);
+  return filledStars + emptyStars;
+}
+
+export function D_pannel() {
   return (
     <div>
       <div className="pannel-screen bg-white relative">
@@ -14,6 +23,5 @@ export function M_pannel() {
     </div>
   );
 }
-
 // 詳細入れる要素を後で決める
-export default M_pannel;
+export default D_pannel;
