@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Header_btn } from "@/components/btn_controller";
 import Script from "next/script";
 import { error } from "console";
-import axios from "axios";
+import FeedViews from "@/components/news_feed_views";
 export default function Home() {
   // for practice use only !!
 
@@ -63,7 +63,7 @@ export default function Home() {
           BBBB
         </button>
       </div>
-      <div className="text-white">hey there news here!!!</div>
+      <FeedViews></FeedViews>
     </main>
   );
 }

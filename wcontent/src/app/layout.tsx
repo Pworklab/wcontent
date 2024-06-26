@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-import NewsFeed from "@/components/news_feed";
-import { APINEWS } from "@/components/news_feed";
+import { ReturnIndexPathBtn } from "@/components/btn_controller";
+import FeedViews from "@/components/news_feed";
+
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +21,6 @@ export default function RootLayout({
         <section>
           <Header></Header>
           {children}
-          <NewsFeed></NewsFeed>
         </section>
       </body>
     </html>
