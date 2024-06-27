@@ -1,9 +1,9 @@
+// import { useState, useEffect } from "react";
+// import { ToExternalPathBtn } from "./btn_controller";
+// import { P } from "./server_side";
+import { useEffect, useState } from "react";
+import useSWR, { Fetcher } from "swr";
 import { ToExternalPathBtn } from "./btn_controller";
-import { ReturnIndexPathBtn } from "./btn_controller";
-import Script from "next/script";
-import { FetchNews } from "./server_side";
-import { Debugger_Btn } from "./btn_controller";
-import { parseArgs } from "util";
 
 interface Data {
   appnews: Appnews;
@@ -29,55 +29,113 @@ interface Newsitem {
   appid: number;
   tags: string[];
 }
-
-interface feedViesProps {
-  aaa_index: number;
-}
-
-// I think when handling with async it's better to use it as a whole function rather than getting asyn object to non async object
-
 const formattedDate = (timestamp: number) => {
   return new Date(timestamp * 1000).toLocaleDateString();
 };
 
-const fetchNews = async (): Promise<Data> => {
-  const result = await fetch("http://localhost:3000/api/news");
-  return result.json();
-};
+//この1行凄いシンプルだけど分かりやすい
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 /////// パラメータの渡し方は｛｝　で囲め！！
-export default async function NewsFeed({ aaa_index }) {
-  const { appnews } = await fetchNews();
+export default function NewsFeed({}) {
+  const [selected, setSelected] = useState<number>(0);
+  // const [data, setData] = useState<Newsitem>();
+  const { data, error, isLoading } = useSWR<Data>("/api/news", fetcher);
 
-  if (appnews.newsitems.length < 0) {
-    return <>Not Found</>;
+  if (isLoading) {
+    return <div className="loading loading-relative"></div>;
   }
-  console.log("me is", aaa_index);
-  const firstNewsItem = appnews.newsitems[0];
+  if (error) {
+    return <>Error ...</>;
+  }
   return (
-    <div>
-      <div className="box-content size-60 bg-gray-200">
+    <>
+      <select
+        onChange={(e) => {
+          const val = Number(e.target.value);
+          setSelected(val);
+        }}
+      >
+        {Array.from(Array(data.appnews.count).keys()).map((val) => (
+          <option value={val}>{val + 1}</option>
+        ))}
+      </select>
+      <div className="box-content newsFeedSize bg-gray-200">
         <div className="flex flex-col">
           <div>
-            <p className="text-black flex justify-center">
-              {firstNewsItem.title}
+            <p className="text-black flex h-6 overflow-clip ">
+              {data.appnews.newsitems[selected].title}
             </p>
-            <article className="text-wrap overflow-y-scroll overflow-x-hidden h-40 auto w-auto bg-amber-200">
-              <p className="break-words">{firstNewsItem.contents}</p>
+            <article className="text-ellipsis  overflow-x-hidden h-40 auto w-auto bg-amber-200">
+              <p className="break-words">
+                {data.appnews.newsitems[selected].contents}
+              </p>
             </article>
           </div>
           <div className="flex flex-row mx-2 justify-between">
             <p className="bg-black text-yellow-400">
-              {formattedDate(firstNewsItem.date)}
+              {formattedDate(data.appnews.newsitems[selected].date)}
             </p>
-            <ToExternalPathBtn link={firstNewsItem.url}></ToExternalPathBtn>
+            <ToExternalPathBtn
+              link={data.appnews.newsitems[selected].url}
+            ></ToExternalPathBtn>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
-}
+  // const [allNews, setAllNews] = useState<Newsitem[]>(null);
+  // const [targetPage, setTargetPage] = useState(0);
+  // useEffect(() => {
+  //   P.then((value) => {
+  //     setAllNews(value);
+  //   });
+  // }, []);
 
+  // if (allNews === null) {
+  //   return (
+  //     <div>
+  //       <div className="box box2">
+  //         <div className="loading loading-relative"></div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+  // const shownPage = allNews[targetPage];
+  // return (
+  //   <div>
+  //     <div className="flex gap-2">
+  //       <button onClick={() => setTargetPage(0)} className="bg-yellow-200">
+  //         page 1
+  //       </button>
+  //       <button onClick={() => setTargetPage(1)} className="bg-yellow-400">
+  //         page 2
+  //       </button>
+  //       <button onClick={() => setTargetPage(2)} className="bg-yellow-500">
+  //         page 3
+  //       </button>
+  //     </div>
+  //     <div className="box-content newsFeedSize bg-gray-200">
+  //       <div className="flex flex-col">
+  //         <div>
+  //           <p className="text-black flex h-6 overflow-clip ">
+  //             {shownPage.title}
+  //           </p>
+  //           <article className="text-ellipsis  overflow-x-hidden h-40 auto w-auto bg-amber-200">
+  //             <p className="break-words">{shownPage.contents}</p>
+  //           </article>
+  //         </div>
+  //         <div className="flex flex-row mx-2 justify-between">
+  //           <p className="bg-black text-yellow-400">
+  //             {formattedDate(shownPage.date)}
+  //           </p>
+  //           <ToExternalPathBtn link={shownPage.url}></ToExternalPathBtn>
+  //         </div>
+  //       </div>
+  //     </div>
+  // </div>
+  // );
+}
 /*
 // how to pre-render this ...
 export default async function NewsFeed() {

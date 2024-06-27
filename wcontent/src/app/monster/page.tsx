@@ -8,19 +8,7 @@ export default function Home() {
         monsterPage
         <div className="mx-20">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
-            <M_pannel></M_pannel>
+            <M_pannel name="mike"></M_pannel>
           </div>
         </div>
         <Back_btn></Back_btn>

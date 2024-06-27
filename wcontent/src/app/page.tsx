@@ -3,10 +3,9 @@ import Image from "next/image";
 import { Header_btn } from "@/components/btn_controller";
 import Script from "next/script";
 import { error } from "console";
-import FeedViews from "@/components/news_feed_views";
+import { PrepNewsItem } from "@/components/server_side";
+import NewsFeed from "@/components/news_feed";
 export default function Home() {
-  // for practice use only !!
-
   interface GameNewsDetails {
     gid: string;
     title: string;
@@ -35,7 +34,6 @@ export default function Home() {
     id: number;
     advice: string;
   }
-
   async function APIA() {
     const result = await fetch("https://api.quotable.io/quotes/random");
     const json = (await result.json()) as APIData[];
@@ -47,7 +45,6 @@ export default function Home() {
     const slip: APIDatadetails = json.slip;
     console.log(slip.advice);
   }
-
   return (
     <main className="bg-fullscreen">
       <div className="text-white">hello underworld</div>
@@ -62,8 +59,10 @@ export default function Home() {
         <button className="text-white" onClick={async () => APIB()}>
           BBBB
         </button>
+        <div className="">
+          <NewsFeed></NewsFeed>
+        </div>
       </div>
-      <FeedViews></FeedViews>
     </main>
   );
 }

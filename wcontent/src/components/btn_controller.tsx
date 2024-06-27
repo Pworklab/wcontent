@@ -10,7 +10,15 @@ interface HeaderBtnProps {
   link: string;
 }
 
-// this is my
+function linkChecker(m_link: string) {
+  //ホームかどうか、
+  if (m_link.length == 1) {
+    return m_link;
+  }
+  const splitLink = m_link.split("/");
+  if (splitLink.length > 1) return "/" + splitLink[1];
+}
+
 function Header_btn({ title, link }: HeaderBtnProps) {
   // at first I was making a button handler but on this case
   // because I'm using router I notice I can just push my link to it!!
@@ -21,13 +29,13 @@ function Header_btn({ title, link }: HeaderBtnProps) {
   const selected_page =
     "text-red-400 bg-green-200 rounded-lg p-1 hover:bg-yellow-200";
   let current_page = "";
-
-  if (link == currentPath) {
+  const a = linkChecker(currentPath);
+  //console.log("【", currentPath, "】", currentPath.length);
+  if (link == linkChecker(currentPath)) {
     current_page = selected_page;
   } else {
     current_page = default_page;
   }
-
   return (
     <div>
       <button onClick={() => router.push(link)} className={current_page}>
@@ -83,9 +91,16 @@ export function ToExternalPathBtn({ link }: path) {
       router.push(link);
     }
   };
+  return <button onClick={handleClick}>🔍</button>;
+}
+
+export function changeGroupNameBtn(T) {
+  const handleClick = () => {
+    T();
+  };
   return (
     <button onClick={handleClick} className="bg-green-500">
-      check for more details
+      button;
     </button>
   );
 }

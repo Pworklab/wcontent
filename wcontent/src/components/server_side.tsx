@@ -1,4 +1,3 @@
-import { createContext, useContext } from "react";
 interface Data {
   appnews: Appnews;
 }
@@ -29,23 +28,15 @@ export const FetchNews = async (): Promise<Data> => {
   return result.json();
 };
 
-/*
- it will cause loop
-  function callOnce() {
-    console.log("is this called multiple times?");
-    PrepNewsItem().then((data) => {
-      newsItems = data;
-      console.log("is this called multiple times?");
-    });
-  }
-*/
-
 export async function PrepNewsItem() {
   const tmp = await FetchNews();
   const NewsItems: Newsitem[] = tmp.appnews.newsitems;
   return NewsItems;
 }
+
 export const P = PrepNewsItem();
+
+//export const Q = useRef(P);
 
 //const MadeNews = createContext(PrepNewsItem());
 //export const useNews = useContext(MadeNews);
