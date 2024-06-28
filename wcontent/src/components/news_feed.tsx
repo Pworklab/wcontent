@@ -43,7 +43,7 @@ export default function NewsFeed({}) {
   const { data, error, isLoading } = useSWR<Data>("/api/news", fetcher);
 
   if (isLoading) {
-    return <div className="loading loading-relative"></div>;
+    return <>Loading ...</>;
   }
   if (error) {
     return <>Error ...</>;
@@ -60,7 +60,7 @@ export default function NewsFeed({}) {
           <option value={val}>{val + 1}</option>
         ))}
       </select>
-      <div className="box-content newsFeedSize bg-gray-200">
+      <div className="box-content w-64 h-16 bg-gray-200">
         <div className="flex flex-col">
           <div>
             <p className="text-black flex h-6 overflow-clip ">
@@ -84,6 +84,7 @@ export default function NewsFeed({}) {
       </div>
     </>
   );
+
   // const [allNews, setAllNews] = useState<Newsitem[]>(null);
   // const [targetPage, setTargetPage] = useState(0);
   // useEffect(() => {

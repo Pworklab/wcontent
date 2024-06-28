@@ -33,10 +33,8 @@ export async function PrepNewsItem() {
   const NewsItems: Newsitem[] = tmp.appnews.newsitems;
   return NewsItems;
 }
-
 export const P = PrepNewsItem();
 
 //export const Q = useRef(P);
-
 //const MadeNews = createContext(PrepNewsItem());
 //export const useNews = useContext(MadeNews);

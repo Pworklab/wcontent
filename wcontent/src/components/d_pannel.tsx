@@ -15,7 +15,7 @@ function numToStar(num) {
 export function D_pannel() {
   return (
     <div>
-      <div className="pannel-screen bg-white relative">
+      <div className="w-40 h-40 bg-white relative">
         <div className="flex flex-col">
           <p className="text-black flex justify-center">Monster Name</p>
         </div>
@@ -23,5 +23,6 @@ export function D_pannel() {
     </div>
   );
 }
+
 // 詳細入れる要素を後で決める
 export default D_pannel;

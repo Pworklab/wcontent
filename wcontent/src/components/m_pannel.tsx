@@ -1,3 +1,4 @@
+import React from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 interface M_pannelProps {
@@ -13,7 +14,7 @@ export function M_pannel({ name, descript }: M_pannelProps) {
   return (
     <div>
       <button onClick={() => router.push(link)}>
-        <div className="pannel-screen bg-white relative">
+        <div className="w-40 h-40 bg-white relative">
           <div className="flex flex-col">
             <p className="text-black flex justify-center">{name}</p>
           </div>
@@ -22,5 +23,38 @@ export function M_pannel({ name, descript }: M_pannelProps) {
     </div>
   );
 }
-// 詳細入れる要素を後で決める
+
+// origin
+// 420 X 420 // 24 framerate use this later
+//public\testFilm\film.webm
+
+export const M_Icon_holder = () => {
+  return (
+    <img
+      src="/testPhoto/smiler.png"
+      className="object-fill w-[330px] h-[330px] md:w-[420px] md:h-[420px]"
+      alt="Content Warning"
+    />
+  );
+};
+
+export const M_film_holder = () => {
+  return (
+    <video className="object-cover" controls>
+      <source src="/testFilm/film.webm" />
+      Your browser does not support the video tag.
+    </video>
+  );
+};
+
+export const M_film_notFound = () => {
+  return (
+    <img
+      src="/testFilm/notFound.gif"
+      className="object-fill w-[330px] h-[330px] md:w-[420px] md:h-[420px]"
+      alt="Content Warning"
+    />
+  );
+};
+
 export default M_pannel;

@@ -1,0 +1,50 @@
+<div className="flex justify-between scroll-auto">
+      {/* spacer*/}
+      <div></div>
+      {/* spacer*/}
+      {/*
+  width: 600px;
+  height: 350px;
+   */}
+      {/* thiss will be the main bg  */}
+      <div className="w-[1300px] h-[1400px] bg-white rounded-md">
+        {/* top bottom seperator  */}
+        <div className="my-5">
+          <section className="flex justify-center">
+            {/*holder*/}
+            <div className="bg-green-400 w-[1000px] h-[300px] flex items-center justify-center rounded-lg">
+              <div className="flex space-x-10">
+                <div className="w-[250px] h-[250px] rounded-lg overflow-clip">
+                  <M_Icon_holder></M_Icon_holder>
+                </div>
+                <div className="bg-amber-200 w-[500px] h-[250px] rounded-lg">
+                  <div className="my-5 mx-5">
+                    <p className="text-lg">{"huhuh"}</p>
+                    <p>Details</p>
+                    <p className="flex justify-end">★★★★★</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="my-10"></div>
+          <section className="flex justify-center">
+            {/* video section */}
+            <div className="w-[1000px] h-full bg-amber-600 rounded-lg overflow ">
+              <div className="flex justify-center ">
+                <div className="grid grid-cols-2 gap-10 mt-10 mb-10">
+                  <M_film_holder></M_film_holder>
+                  <M_film_holder></M_film_holder>
+                  <M_film_holder></M_film_holder>
+                  <M_film_holder></M_film_holder>
+                </div>
+              </div>
+            </div>
+          </section>
+          ;
+        </div>
+      </div>
+      {/* spacer*/}
+      <div></div>
+      {/* spacer*/}
+    </div>
