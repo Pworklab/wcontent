@@ -27,9 +27,9 @@ export default function Page({ params }: { params: { slug: string } }) {
               <div className="">
                 <div className="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-2 ">
                   <M_film_holder></M_film_holder>
-                  <M_film_notFound></M_film_notFound>
-                  <M_film_notFound></M_film_notFound>
-                  <M_film_notFound></M_film_notFound>
+                  <M_film_notFound path="https://i.gifer.com/XOsX.gif"></M_film_notFound>
+                  <M_film_notFound path="akdjsajdhsa"></M_film_notFound>
+                  <M_film_notFound path="https://i.gifer.com/XOsX.gif"></M_film_notFound>
                 </div>
               </div>
             </div>
@@ -94,13 +94,6 @@ const stackPCver = () => {
   </div>;
 };
 
-/*
-<div className="block md:hidden">SM</div>
-<div className="hidden md:block lg:hidden">MD</div>
-<div className="hidden lg:block xl:hidden">LG</div>
-<div className="hidden xl:block 2xl:hidden">XL</div>
-<div className="hidden 2xl:block">2XL</div>
-*/
 const stack = () => {
   {
     /* video BG  */

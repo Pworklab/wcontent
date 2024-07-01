@@ -38,6 +38,10 @@ export const M_Icon_holder = () => {
   );
 };
 
+interface M_filmProps {
+  path: string;
+}
+
 export const M_film_holder = () => {
   return (
     <video className="object-cover" controls>
@@ -47,14 +51,24 @@ export const M_film_holder = () => {
   );
 };
 
-export const M_film_notFound = () => {
+export const M_film_notFound = ({ path }: M_filmProps) => {
+  const onErrorpath = "/testFilm/notFound.gif";
+
   return (
     <img
-      src="/testFilm/notFound.gif"
+      src={path}
       className="object-fill w-[330px] h-[330px] md:w-[420px] md:h-[420px]"
       alt="Content Warning"
+      onError={(e) => {
+        console.log("im not foundeee");
+        e.currentTarget.src = "/testFilm/notFound.gif";
+      }}
     />
   );
 };
+
+/*
+<img src={imgPath} alt='sample_img' width='100%' height='auto' onError={(e) => { e.currentTarget.src = dummy_img }} /> 
+*/
 
 export default M_pannel;
