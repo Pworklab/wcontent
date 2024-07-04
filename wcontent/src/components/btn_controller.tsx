@@ -147,7 +147,6 @@ interface Newsitem {
   tags: string[];
 }
 */
-
 /*
 // always make first letter big or it won't get known
 import { fetchNewsTest } from "./news_feed";
@@ -165,7 +164,6 @@ export function CheckWebthingy() {
         console.error("Error fetching data:", error);
       });
   };
-
   return (
     <div>
       <button onClick={handleClick} className="text-white">

@@ -53,7 +53,6 @@ export const M_film_holder = () => {
 
 export const M_film_notFound = ({ path }: M_filmProps) => {
   const onErrorpath = "/testFilm/notFound.gif";
-
   return (
     <img
       src={path}
@@ -70,5 +69,4 @@ export const M_film_notFound = ({ path }: M_filmProps) => {
 /*
 <img src={imgPath} alt='sample_img' width='100%' height='auto' onError={(e) => { e.currentTarget.src = dummy_img }} /> 
 */
-
 export default M_pannel;
